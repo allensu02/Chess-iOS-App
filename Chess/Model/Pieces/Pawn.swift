@@ -17,22 +17,21 @@ class Pawn: Piece {
            }
        }
     
-    override func FindAvailableSquares() -> [Location] {
-        var squares: [Location] = []
-        let x = self.location.getX()
-        let y = self.location.getY()
+    override func FindAvailableSquares() -> [Tile] {
+        var squares: [Tile] = []
+   
         
         
         switch self.color {
         case "white":
-            squares.append(Location(x: x, y: y+1))
+            squares.append(Tile(x: x, y: y+1))
             if moves == 0 {
-                squares.append(Location(x: x, y: y+2))
+                squares.append(Tile(x: x, y: y+2))
             }
         case "black":
-            squares.append(Location(x: x, y: y - 1))
+            squares.append(Tile(x: x, y: y - 1))
             if moves == 0 {
-                squares.append(Location(x: x, y: y - 2))
+                squares.append(Tile(x: x, y: y - 2))
             }
         default:
             print("error with pawn find avail squares")

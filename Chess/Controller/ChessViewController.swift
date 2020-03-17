@@ -10,56 +10,60 @@ import UIKit
 
 class ChessViewController: UIViewController {
 
-    @IBOutlet var tileButtons : [UIButton]!
+    @IBOutlet weak var turnLabel: UILabel!
+    @IBOutlet var allTiles: [Tile]!
+    
 
     var whitePieces: [Piece] = []
     var blackPieces: [Piece] = []
     
     var turn: String = K.white
-    var allTiles = [Tile]()
-    
-    var oldTile: Tile?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setUpBoard()
-        
         setUpPieces()
         updateBoard()
         
         
     }
 
-    
+//MARK: - Setting up initial board
     func setUpBoard () {
         var count = 0
         var numRow = 1
+        
+        //sets the tag for each tile based on row and column
         for row in 1...8 {
             var numCol = 1
             for button in 1...8 {
-                tileButtons[count].tag = numRow*10 + numCol
+                allTiles[count].tag = numRow*10 + numCol
                 numCol += 1
                 count += 1
             }
             numRow += 1
         }
-        for tileButton in tileButtons {
+        for tileButton in allTiles {
             tileButton.setTitle("", for: .normal)
             
-            var ones = tileButton.tag % 10
-            var tens = tileButton.tag/10
-            let sum = ones + tens
-            if sum % 2 == 0 {
-                tileButton.backgroundColor = K.colorLight
-            } else {
-                tileButton.backgroundColor = K.colorDark
-            }
-            allTiles.append(Tile(tileButton, tileTag: tileButton.tag))
+            setDefaultTileColor(tileButton: tileButton)
         }
         
     }
+    
+    //sets dark and light tile colors
+    func setDefaultTileColor (tileButton: UIButton) {
+        var ones = tileButton.tag % 10
+        var tens = tileButton.tag/10
+        let sum = ones + tens
+        if sum % 2 == 0 {
+            tileButton.backgroundColor = K.colorLight
+            } else {
+                tileButton.backgroundColor = K.colorDark
+            }
+    }
+    
     
     func updateBoard () {
         for piece in whitePieces {
@@ -70,74 +74,65 @@ class ChessViewController: UIViewController {
         }
     }
     
+    
     func updatePiece (_ piece: Piece) {
-        let int = piece.location.location
-        for button in tileButtons {
-            if int == button.tag {
+        let int = piece.location
+        for tile in allTiles {
+            if int == tile.tag {
                 let image = UIImage(named: piece.imageName)
-                button.setBackgroundImage(image, for: .normal)
+                tile.setBackgroundImage(image, for: .normal)
                 if piece.isActive == true {
-                    button.isEnabled = true
+                    tile.isEnabled = true
                 } else {
-                    button.isEnabled = false
+                    tile.isEnabled = false
                 }
             }
         }
     }
     
+    func updateTile (_ tile: Tile) {
+        
+        if tile.doesHavePiece() {
+            tile.setBackgroundImage(UIImage(named: tile.piece!.imageName), for: .normal)
+        } else {
+            tile.setBackgroundImage(.none, for: .normal)
+        }
+        
+    }
     func setUpPieces () {
         
-        var location = Location(0)
         
         for i in 1...8 {
-            location.changeLocation(20+i)
-            addPiece(piece: Pawn(active: true, loc: location, side: K.white))
-            location.changeLocation(70+i)
-            addPiece(piece: Pawn(active: true, loc: location, side: K.black))
+            addPiece(piece: Pawn(active: true, loc: 20+i, side: K.white))
+            addPiece(piece: Pawn(active: true, loc: 70+i, side: K.black))
             
         }
         
         for i in 1...3 {
             switch i {
             case 1:
-                location.changeLocation(10 + 1)
-                addPiece(piece: Rook(active: true, loc: location, side: K.white))
-                location.changeLocation(10 + 8)
-                addPiece(piece: Rook(active: true, loc: location, side: K.white))
-                location.changeLocation(80 + 1)
-                addPiece(piece: Rook(active: true, loc: location, side: K.black))
-                location.changeLocation(80 + 8)
-                addPiece(piece: Rook(active: true, loc: location, side: K.black))
+                addPiece(piece: Rook(active: true, loc: 10 + 1, side: K.white))
+                addPiece(piece: Rook(active: true, loc: 10 + 8, side: K.white))
+                addPiece(piece: Rook(active: true, loc: 80 + 1, side: K.black))
+                addPiece(piece: Rook(active: true, loc: 80 + 8, side: K.black))
             case 2:
-                location.changeLocation(10 + 2)
-                addPiece(piece: Knight(active: true, loc: location, side: K.white))
-                location.changeLocation(10 + 7)
-                addPiece(piece: Knight(active: true, loc: location, side: K.white))
-                location.changeLocation(80 + 2)
-                addPiece(piece: Knight(active: true, loc: location, side: K.black))
-                location.changeLocation(80 + 7)
-                addPiece(piece: Knight(active: true, loc: location, side: K.black))
+                addPiece(piece: Knight(active: true, loc: 10 + 2, side: K.white))
+                addPiece(piece: Knight(active: true, loc: 10 + 7, side: K.white))
+                addPiece(piece: Knight(active: true, loc: 80 + 2, side: K.black))
+                addPiece(piece: Knight(active: true, loc: 80 + 7, side: K.black))
             case 3:
-                location.changeLocation(10 + 3)
-                addPiece(piece: Bishop(active: true, loc: location, side: K.white))
-                location.changeLocation(10 + 6)
-                addPiece(piece: Bishop(active: true, loc: location, side: K.white))
-                location.changeLocation(80 + 3)
-                addPiece(piece: Bishop(active: true, loc: location, side: K.black))
-                location.changeLocation(80 + 6)
-                addPiece(piece: Bishop(active: true, loc: location, side: K.black))
+                addPiece(piece: Bishop(active: true, loc: 10 + 3, side: K.white))
+                addPiece(piece: Bishop(active: true, loc: 10 + 6, side: K.white))
+                addPiece(piece: Bishop(active: true, loc: 80 + 3, side: K.black))
+                addPiece(piece: Bishop(active: true, loc: 80 + 6, side: K.black))
             default:
                 print("error with adding rooks, knights, and bishops")
             }
             
-            location.changeLocation(10 + 4)
-            addPiece(piece: Queen(active: true, loc: location, side: K.white))
-            location.changeLocation(80 + 5)
-            addPiece(piece: Queen(active: true, loc: location, side: K.black))
-            location.changeLocation(10 + 5)
-            addPiece(piece: King(active: true, loc: location, side: K.white))
-            location.changeLocation(80 + 4)
-            addPiece(piece: King(active: true, loc: location, side: K.black))
+            addPiece(piece: Queen(active: true, loc: 10 + 4, side: K.white))
+            addPiece(piece: Queen(active: true, loc: 80 + 5, side: K.black))
+            addPiece(piece: King(active: true, loc: 10 + 5, side: K.white))
+            addPiece(piece: King(active: true, loc: 80 + 4, side: K.black))
             
         }
         
@@ -149,8 +144,7 @@ class ChessViewController: UIViewController {
         } else {
             blackPieces.append(piece)
         }
-        let location = piece.location
-        var num = (location.getY() - 1) * 8 + location.getX() - 1
+        var num = (piece.y - 1) * 8 + piece.x - 1
         allTiles[num].addPiece(piece)
         
         
@@ -162,49 +156,68 @@ class ChessViewController: UIViewController {
         
     }
     
-    func move () {
-        
+
+    @IBAction func tileTouched(_ sender: Tile) {
+        movePiece(newTile: sender)
     }
     
-    @IBAction func tileTouched(_ sender: UIButton) {
-        let location = sender.tag
-        let newTile = allTiles[location - 1]
-
-        
-        //if turn is white, and there is no tile touched yet, and the tile touched is same color as the turn, then tiletouched is the new tile.
-        //if tiletouched isn't the same color, tiletouched is still nil
-        //if there is a tile touched, and that new tile touched is an available square of tiletouched previously, then the piece will move to the new tile
-        movePiece(sender: sender, newTile: newTile)
-    }
+    //if turn is white, and there is no tile touched yet, and the tile touched is same color as the turn, then tiletouched is the new tile.
+    //if tiletouched isn't the same color, tiletouched is still nil
+    //if there is a tile touched, and that new tile touched is an available square of tiletouched previously, then the piece will move to the new tile
     
-    func movePiece (sender: UIButton, newTile: Tile) {
+    var oldTile: Tile?
 
+    var count = 0
+    func movePiece (newTile: Tile) {
+        count += 1
+        print("move: \(count)")
+        print("old tile: \(oldTile)")
+        print("new tile has piece?: \(newTile.doesHavePiece())")
+        
+        if (oldTile?.piece?.isAvailableSquare(newTile)) != nil {
+            print("newtile is avail square")
+        } else {
+            print("new tile isn't avail square")
+        }
         if oldTile == nil {
             if newTile.piece?.color == turn {
-                    print("ran")
-                    oldTile = newTile
-                    sender.backgroundColor = .lightGray
-                } else {
-                    oldTile = nil
-                }
+                oldTile = newTile
+                newTile.backgroundColor = .lightGray
+                
             } else {
-            if (oldTile?.piece?.isAvailableSquare(newTile))!  {
-                    newTile.addPiece(oldTile!.piece!)
-                    oldTile?.removePiece()
-                    nextTurn()
+                oldTile = nil
+                setDefaultTileColor(tileButton: newTile)
+            }
+        } else if oldTile != nil {
+            for tile in oldTile!.piece!.FindAvailableSquares() {
+                print(tile.tag)
+            }
+            if (oldTile!.piece!.isAvailableSquare(newTile))  {
+                newTile.addPiece(oldTile!.piece!)
+                oldTile?.removePiece()
+                updateTile(oldTile!)
+                updateTile(newTile)
+                nextTurn()
+                setDefaultTileColor(tileButton: oldTile!)
+                oldTile = nil
                 } else {
                     oldTile = nil
+                    setDefaultTileColor(tileButton: newTile)
                 }
             }
    
     }
     
+    
     func nextTurn () {
+        
         if turn == K.white {
             turn = K.black
         } else {
             turn = K.white
         }
+        
+        
     }
 }
     

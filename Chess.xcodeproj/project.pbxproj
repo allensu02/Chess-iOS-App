@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A333798924179B4D00237DB1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333798824179B4D00237DB1 /* Location.swift */; };
 		A33569C32415EDB700979D73 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33569C22415EDB700979D73 /* Piece.swift */; };
 		A33569C52415EF0C00979D73 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33569C42415EF0C00979D73 /* Pawn.swift */; };
 		A33569C72415EFAF00979D73 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33569C62415EFAF00979D73 /* Knight.swift */; };
@@ -31,7 +30,6 @@
 		0C9E47E8BEB0967E527348C2 /* Pods-Chess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess.debug.xcconfig"; path = "Target Support Files/Pods-Chess/Pods-Chess.debug.xcconfig"; sourceTree = "<group>"; };
 		59531F0C1B159B9F246996A5 /* Pods_Chess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC36ABB7C9CEE8B23A7DC27 /* Pods-Chess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chess.release.xcconfig"; path = "Target Support Files/Pods-Chess/Pods-Chess.release.xcconfig"; sourceTree = "<group>"; };
-		A333798824179B4D00237DB1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		A33569C22415EDB700979D73 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		A33569C42415EF0C00979D73 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		A33569C62415EFAF00979D73 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 				A33569C42415EF0C00979D73 /* Pawn.swift */,
 				A33569C62415EFAF00979D73 /* Knight.swift */,
 				A33569CA2415EFD300979D73 /* Bishop.swift */,
-				A333798824179B4D00237DB1 /* Location.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -283,7 +280,6 @@
 				A3A6CFF324148FC3004E4961 /* AppDelegate.swift in Sources */,
 				A3A6CFF524148FC3004E4961 /* SceneDelegate.swift in Sources */,
 				A33569D22415F03E00979D73 /* Tile.swift in Sources */,
-				A333798924179B4D00237DB1 /* Location.swift in Sources */,
 				A33569C72415EFAF00979D73 /* Knight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

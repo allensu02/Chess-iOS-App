@@ -16,35 +16,33 @@ class King: Piece {
            }
        }
     
-    override func FindAvailableSquares() -> [Location] {
-        var squares: [Location] = []
-        
-        let x = location.getX()
-        let y = location.getY()
+    override func FindAvailableSquares() -> [Tile] {
+        var squares: [Tile] = []
+     
         
         if x > 1 {
-            squares.append(Location(x: x - 1, y: y))
+            squares.append(Tile(x: x - 1, y: y))
         }
         if x > 1 && y > 1 {
-            squares.append(Location(x: x - 1, y: y - 1))
+            squares.append(Tile(x: x - 1, y: y - 1))
         }
         if x > 1 && y < 8 {
-            squares.append(Location(x: x - 1, y: y + 1))
+            squares.append(Tile(x: x - 1, y: y + 1))
         }
         if x < 8 {
-            squares.append(Location(x: x + 1, y: y))
+            squares.append(Tile(x: x + 1, y: y))
         }
         if x < 8 && y > 1 {
-            squares.append(Location(x: x + 1, y: y - 1))
+            squares.append(Tile(x: x + 1, y: y - 1))
         }
         if x < 8 && y < 8 {
-            squares.append(Location(x: x + 1, y: y + 1))
+            squares.append(Tile(x: x + 1, y: y + 1))
         }
         if y < 8 {
-            squares.append(Location(x: x, y: y + 1))
+            squares.append(Tile(x: x, y: y + 1))
         }
         if y > 1 {
-            squares.append(Location(x: x, y: y - 1))
+            squares.append(Tile(x: x, y: y - 1))
         }
         
         return squares

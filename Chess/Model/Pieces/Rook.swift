@@ -16,20 +16,20 @@ class Rook: Piece {
            }
        }
     
-    override func FindAvailableSquares() -> [Location] {
-        var squares: [Location] = []
+    override func FindAvailableSquares() -> [Tile] {
+        var squares: [Tile] = []
         
-        let x = location.getX()
-        let y = location.getY()
+       
         
         for i in 1...8 {
             //tag and location, tens digit: y location, ones digit: x location
-            let horizontalSquare = Location(i + y * 10)
-            if horizontalSquare.getX() != x{
+            let horizontalSquare = Tile(i + y * 10)
+            
+            if horizontalSquare.x != x{
                 squares.append(horizontalSquare)
             }
-            let verticalSquare = Location(x + 10 * i)
-            if verticalSquare.getY() != y {
+            let verticalSquare = Tile(x + 10 * i)
+            if verticalSquare.y != y {
                 squares.append(verticalSquare)
             }
         }

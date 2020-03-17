@@ -16,14 +16,13 @@ class Knight: Piece {
         }
     }
     
-    override func FindAvailableSquares() -> [Location] {
-        var squares: [Location] = []
-        let x = location.getX()
-        let y = location.getY()
+    override func FindAvailableSquares() -> [Tile] {
+        var squares: [Tile] = []
+       
         
         var newX = 0
         var newY = 0
-        var availableSquare: Location
+        var availableSquare: Tile
        
         for i in 1...8 {
             
@@ -56,7 +55,7 @@ class Knight: Piece {
                 print("error with Knight.findAvailableSquare")
             }
             if newX > 0 && newX < 9 && newY > 0 && newY < 9{
-                availableSquare = Location(newX + newY * 10)
+                availableSquare = Tile(newX + newY * 10)
                 squares.append(availableSquare)
             }
             

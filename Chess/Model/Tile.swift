@@ -8,13 +8,52 @@
 
 import UIKit
 
-class Tile {
-    var location: Location
+class Tile: UIButton {
+    var location: Int = 0
     var piece: Piece?
-    var tag: Int
-    init(_ tile: UIButton, tileTag: Int) {
-        location = Location(tile.tag)
-        tag = tileTag
+    var index: Int = 0
+    var y: Int = 0
+    var x: Int = 0
+    
+    init(x: Int, y: Int) {
+        super.init(frame: .zero)
+        setTag(x + y*10)
+    }
+
+    init(_ loc: Int) {
+        super.init(frame: .zero)
+        setTag(loc)
+    }
+    
+    func setTag (_ tagNum: Int) {
+        tag = tagNum
+    }
+    
+    func getX () -> Int {
+        return tag%10
+    }
+    
+    func getY() -> Int{
+        return tag/10
+    }
+    
+    func getLocation() -> Int {
+        return tag
+    }
+    
+    func getIndex() -> Int {
+        let s = (y-1) * 8
+        let p = x - 1
+        
+        return s + p
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
     }
     
     func addPiece (_ piece: Piece) {
