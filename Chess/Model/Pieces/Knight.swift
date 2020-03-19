@@ -60,7 +60,6 @@ class Knight: Piece {
             }
             
         }
-        
         return squares
     }
 }

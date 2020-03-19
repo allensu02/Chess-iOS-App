@@ -11,8 +11,12 @@ import UIKit
 class K {
     static var white = "white"
     static var black = "black"
-    
+    var allTiles: [Tile] = []
     static let colorDark = UIColor(red: 128/255, green: 94/255, blue: 0, alpha: 1)
     static let colorLight = UIColor(red: 255/255, green: 203/255, blue: 120/255, alpha: 1)
     
+    static var tilesArray: [Tile] = []
+    static var whitePieces: [Piece] = []
+    static var blackPieces: [Piece] = []
+
 }

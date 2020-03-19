@@ -42,8 +42,8 @@ class Tile: UIButton {
     }
     
     func getIndex() -> Int {
-        let s = (y-1) * 8
-        let p = x - 1
+        let s = (self.getY()-1) * 8
+        let p = self.getX() - 1
         
         return s + p
     }

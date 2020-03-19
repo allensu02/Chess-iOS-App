@@ -16,6 +16,8 @@ class Piece {
     var color: String
     var moves: Int
     var imageName: String
+    var opponentColor: String
+
     
     init(active: Bool, loc: Int, side: String) {
         
@@ -27,12 +29,19 @@ class Piece {
         moves = 0
         color = side
         imageName = ""
+        if color == K.white {
+            opponentColor = K.black
+        } else {
+            opponentColor = K.white
+        }
     }
     
     func FindAvailableSquares () -> [Tile] {
         var squares = [Tile()]
         return squares
     }
+    
+    
     
     func isAvailableSquare(_ tile: Tile) -> Bool {
         let squares = self.FindAvailableSquares()
@@ -46,6 +55,7 @@ class Piece {
         return bool
     }
     func Move(newLocation: Int) {
+        location = newLocation
         x = newLocation%10
         y = newLocation/10
         moves += 1

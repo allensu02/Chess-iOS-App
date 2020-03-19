@@ -14,10 +14,9 @@ class ChessViewController: UIViewController {
     @IBOutlet var allTiles: [Tile]!
     
 
-    var whitePieces: [Piece] = []
-    var blackPieces: [Piece] = []
     
     var turn: String = K.white
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +25,7 @@ class ChessViewController: UIViewController {
         setUpPieces()
         updateBoard()
         
+       
         
     }
 
@@ -66,10 +66,10 @@ class ChessViewController: UIViewController {
     
     
     func updateBoard () {
-        for piece in whitePieces {
+        for piece in K.whitePieces {
             updatePiece(piece)
         }
-        for piece in blackPieces {
+        for piece in K.blackPieces {
             updatePiece(piece)
         }
     }
@@ -94,6 +94,7 @@ class ChessViewController: UIViewController {
         
         if tile.doesHavePiece() {
             tile.setBackgroundImage(UIImage(named: tile.piece!.imageName), for: .normal)
+        
         } else {
             tile.setBackgroundImage(.none, for: .normal)
         }
@@ -129,20 +130,18 @@ class ChessViewController: UIViewController {
                 print("error with adding rooks, knights, and bishops")
             }
             
-            addPiece(piece: Queen(active: true, loc: 10 + 4, side: K.white))
-            addPiece(piece: Queen(active: true, loc: 80 + 5, side: K.black))
-            addPiece(piece: King(active: true, loc: 10 + 5, side: K.white))
-            addPiece(piece: King(active: true, loc: 80 + 4, side: K.black))
-            
         }
-        
+        addPiece(piece: Queen(active: true, loc: 10 + 4, side: K.white))
+        addPiece(piece: Queen(active: true, loc: 80 + 5, side: K.black))
+        addPiece(piece: King(active: true, loc: 10 + 5, side: K.white))
+        addPiece(piece: King(active: true, loc: 80 + 4, side: K.black))
     }
     
     func addPiece (piece: Piece) {
         if piece.color == K.white {
-            whitePieces.append(piece)
+            K.whitePieces.append(piece)
         } else {
-            blackPieces.append(piece)
+            K.blackPieces.append(piece)
         }
         var num = (piece.y - 1) * 8 + piece.x - 1
         allTiles[num].addPiece(piece)
@@ -155,6 +154,7 @@ class ChessViewController: UIViewController {
         turn = K.white
         
     }
+    
     
 
     @IBAction func tileTouched(_ sender: Tile) {
@@ -169,30 +169,20 @@ class ChessViewController: UIViewController {
 
     var count = 0
     func movePiece (newTile: Tile) {
-        count += 1
-        print("move: \(count)")
-        print("old tile: \(oldTile)")
-        print("new tile has piece?: \(newTile.doesHavePiece())")
-        
-        if (oldTile?.piece?.isAvailableSquare(newTile)) != nil {
-            print("newtile is avail square")
-        } else {
-            print("new tile isn't avail square")
-        }
+        K.tilesArray = allTiles
         if oldTile == nil {
             if newTile.piece?.color == turn {
                 oldTile = newTile
-                newTile.backgroundColor = .lightGray
+                newTile.backgroundColor = .green
                 
             } else {
                 oldTile = nil
                 setDefaultTileColor(tileButton: newTile)
             }
         } else if oldTile != nil {
-            for tile in oldTile!.piece!.FindAvailableSquares() {
-                print(tile.tag)
-            }
+            
             if (oldTile!.piece!.isAvailableSquare(newTile))  {
+                oldTile!.piece!.Move(newLocation: newTile.tag)
                 newTile.addPiece(oldTile!.piece!)
                 oldTile?.removePiece()
                 updateTile(oldTile!)
@@ -201,8 +191,9 @@ class ChessViewController: UIViewController {
                 setDefaultTileColor(tileButton: oldTile!)
                 oldTile = nil
                 } else {
+                    setDefaultTileColor(tileButton: oldTile!)
                     oldTile = nil
-                    setDefaultTileColor(tileButton: newTile)
+
                 }
             }
    
@@ -212,8 +203,10 @@ class ChessViewController: UIViewController {
     func nextTurn () {
         
         if turn == K.white {
+            turnLabel.text = "Turn: \(K.black)"
             turn = K.black
         } else {
+            turnLabel.text = "Turn: \(K.white)"
             turn = K.white
         }
         
