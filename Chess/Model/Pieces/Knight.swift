@@ -16,6 +16,12 @@ class Knight: Piece {
         }
     }
     
+    override var type: String {
+        get {
+            return "Knight"
+        } set {
+        }
+    }
     override func FindAvailableSquares() -> [Tile] {
         var squares: [Tile] = []
        
@@ -56,7 +62,16 @@ class Knight: Piece {
             }
             if newX > 0 && newX < 9 && newY > 0 && newY < 9{
                 availableSquare = Tile(newX + newY * 10)
-                squares.append(availableSquare)
+                var availSqaure = true
+                if K.tilesArray[availableSquare.getIndex()].doesHavePiece() {
+                    if K.tilesArray[availableSquare.getIndex()].piece?.color == self.color {
+                        availSqaure = false
+                    }
+                }
+                if availSqaure {
+                    squares.append(availableSquare)
+
+                }
             }
             
         }

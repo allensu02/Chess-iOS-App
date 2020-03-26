@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5F45A505FD3AA90FB0F341785BC6117D"
-               BuildableName = "Loading.framework"
+               BuildableName = "libLoading.a"
                BlueprintName = "Loading"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

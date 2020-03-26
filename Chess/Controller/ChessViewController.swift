@@ -13,7 +13,7 @@ class ChessViewController: UIViewController {
     @IBOutlet weak var turnLabel: UILabel!
     @IBOutlet var allTiles: [Tile]!
     
-
+    var allMoves: [String] = []
     
     var turn: String = K.white
     
@@ -159,6 +159,7 @@ class ChessViewController: UIViewController {
 
     @IBAction func tileTouched(_ sender: Tile) {
         movePiece(newTile: sender)
+        printMoves()
     }
     
     //if turn is white, and there is no tile touched yet, and the tile touched is same color as the turn, then tiletouched is the new tile.
@@ -190,6 +191,8 @@ class ChessViewController: UIViewController {
                 nextTurn()
                 setDefaultTileColor(tileButton: oldTile!)
                 oldTile = nil
+                
+                allMoves.append("\(oldTile?.piece?.imageName) moves from tile \(oldTile?.tag) to \(newTile.tag)")
                 } else {
                     setDefaultTileColor(tileButton: oldTile!)
                     oldTile = nil
@@ -210,7 +213,17 @@ class ChessViewController: UIViewController {
             turn = K.white
         }
         
+        for tile in allTiles {
+            tile.transform = tile.transform.rotated(by: CGFloat(M_PI))
+
+        }
         
+    }
+    
+    func printMoves() {
+        for move in allMoves {
+            print(move)
+        }
     }
 }
     

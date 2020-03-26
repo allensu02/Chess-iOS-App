@@ -17,8 +17,7 @@ class Piece {
     var moves: Int
     var imageName: String
     var opponentColor: String
-
-    
+    var type: String
     init(active: Bool, loc: Int, side: String) {
         
         //tag and location, tens digit: y location, ones digit: x location
@@ -34,6 +33,7 @@ class Piece {
         } else {
             opponentColor = K.white
         }
+        type = ""
     }
     
     func FindAvailableSquares () -> [Tile] {
@@ -46,9 +46,10 @@ class Piece {
     func isAvailableSquare(_ tile: Tile) -> Bool {
         let squares = self.FindAvailableSquares()
         var bool = false
-        for square in squares {
+        outerLoop: for square in squares {
             if tile.tag == square.tag{
                 bool = true
+                break outerLoop
             }
         }
         
@@ -59,5 +60,9 @@ class Piece {
         x = newLocation%10
         y = newLocation/10
         moves += 1
+    }
+    
+    func checkSquare (tile: Tile) -> Bool {
+        return K.tilesArray[tile.getIndex()].doesHavePiece()
     }
 }

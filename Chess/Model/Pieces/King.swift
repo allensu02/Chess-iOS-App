@@ -15,7 +15,12 @@ class King: Piece {
            } set {
            }
        }
-    
+    override var type: String {
+        get {
+            return "King"
+        } set {
+        }
+    }
     override func FindAvailableSquares() -> [Tile] {
         var squares: [Tile] = []
         
@@ -75,24 +80,27 @@ class King: Piece {
     
     func checkForAttack (tile: Tile) -> Bool {
         var availSquare: Bool = true
-        if color == K.white {
-            var count = 1
-            for piece in K.blackPieces {
-                print(count)
-                count += 1
-//                if piece.isAvailableSquare(tile) {
-//                    availSquare = false
-//
-//                }
-            }
-        } else {
-            for piece in K.whitePieces {
-                print(444)
-//                if piece.isAvailableSquare(tile) {
-//                    availSquare = false
-//                }
+        if checkSquare(tile: tile) {
+            if K.tilesArray[tile.getIndex()].piece?.color == self.color {
+                availSquare = false
             }
         }
+//        if color == K.white {
+//            outerLoop: for piece in K.blackPieces {
+//                if piece.isAvailableSquare(tile) {
+//                    availSquare = false
+//                    break outerLoop
+//
+//                }
+//            }
+//        } else {
+//            outerLoop: for piece in K.whitePieces {
+//                if piece.isAvailableSquare(tile) {
+//                    availSquare = false
+//                    break outerLoop
+//                }
+//            }
+//        }
         
         return availSquare
     }

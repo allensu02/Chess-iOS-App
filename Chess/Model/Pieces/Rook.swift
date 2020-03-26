@@ -9,6 +9,8 @@
 import Foundation
 class Rook: Piece {
    
+    var squares: [Tile] = []
+
     override var imageName: String {
            get {
                return "\(color)Rook"
@@ -16,25 +18,86 @@ class Rook: Piece {
            }
        }
     
+    override var type: String {
+        get {
+            return "Rook"
+        } set {
+        }
+    }
     override func FindAvailableSquares() -> [Tile] {
-        var squares: [Tile] = []
+
+        var continueSquares = true
+        var newX = x
+        var newY = y
         
-       
-        
-        for i in 1...8 {
-            //tag and location, tens digit: y location, ones digit: x location
-            let horizontalSquare = Tile(i + y * 10)
+
+        while newX > 1  && continueSquares {
+            newX -= 1
             
-            if horizontalSquare.x != x{
-                squares.append(horizontalSquare)
+            let tile = Tile(x: newX, y: newY)
+            
+            if !toContinue(tile: tile) {
+                continueSquares = false
             }
-            let verticalSquare = Tile(x + 10 * i)
-            if verticalSquare.y != y {
-                squares.append(verticalSquare)
+        }
+        newX = x
+        newY = y
+        continueSquares = true
+        //finding squares to top right corner
+        while newX < 8 && continueSquares{
+            newX += 1
+            let tile = Tile(x: newX, y: newY)
+            if !toContinue(tile: tile) {
+                continueSquares = false
+            }
+        }
+        newX = x
+        newY = y
+        continueSquares = true
+
+        //finding squares to top left corner
+        while newY < 8  && continueSquares{
+            newY += 1
+            let tile = Tile(x: newX, y: newY)
+            if !toContinue(tile: tile) {
+                continueSquares = false
+            }
+        }
+        newX = x
+        newY = y
+        continueSquares = true
+
+        //squares to bottom right corner
+        while newY > 1  && continueSquares{
+            newY -= 1
+            let tile = Tile(x:newX, y:newY)
+            if !toContinue(tile: tile) {
+                continueSquares = false
             }
         }
         
-        return(squares)
+        return squares
+    }
+    
+   
+    
+    func toContinue (tile: Tile) -> Bool {
+        var continueSquares = true
+        if checkSquare(tile: tile) {
+            print(tile.getLocation())
+            if K.tilesArray[tile.getIndex()].piece?.color == self.color {
+                print("color is self")
+                continueSquares = false
+            } else {
+                squares.append(tile)
+                print("color is other")
+                continueSquares = false
+            }
+        } else {
+            squares.append(tile)
+            print("no square")
+        }
+        return continueSquares
         
     }
 }

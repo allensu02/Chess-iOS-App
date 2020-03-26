@@ -16,22 +16,49 @@ class Pawn: Piece {
            } set {
            }
        }
-    
+    override var type: String {
+        get {
+            return "Pawn"
+        } set {
+        }
+    }
     override func FindAvailableSquares() -> [Tile] {
         var squares: [Tile] = []
         
         switch self.color {
         case "white":
             let tile = Tile(x: x, y: y+1)
-            if !K.tilesArray[tile.getIndex()].doesHavePiece() {
+            if !checkSquare(tile: tile) {
                 squares.append(tile)
             }
             if moves == 0 {
                 let tile = Tile(x: x, y: y+2)
-                if !K.tilesArray[tile.getIndex()].doesHavePiece() &&  !K.tilesArray[tile.getIndex()-8].doesHavePiece(){
+                if !checkSquare(tile: tile) &&  !K.tilesArray[tile.getIndex()-8].doesHavePiece(){
                     squares.append(tile)
                 }
             }
+            
+            if y == 5 {
+                if self.x > 1 {
+                    let tileOne = Tile(x: x + 1, y: y)
+                    if checkSquare(tile: tileOne) {
+                        if tileOne.piece?.imageName == "blackPawn" {
+                            print("yes")
+                        }
+                    }
+                }
+                if self.x < 8 {
+                    let tileTwo = Tile(x: x - 1, y: y)
+                    if checkSquare(tile: tileTwo) {
+                        if tileTwo.piece?.imageName == "blackPawn" {
+                            
+                        }
+                    }
+                }
+            }
+            
+            
+            
             if y < 8 {
                 let diagonalY = y + 1
                 if x > 1 {
@@ -61,15 +88,17 @@ class Pawn: Piece {
             
             }
             
+            
+            
         case "black":
             let tile = Tile(x: x, y: y-1)
-            if !K.tilesArray[tile.getIndex()].doesHavePiece() {
+            if !checkSquare(tile: tile) {
                 squares.append(tile)
             }
             
             if moves == 0 {
                 let tile = Tile(x: x, y: y-2)
-                if !K.tilesArray[tile.getIndex()].doesHavePiece() &&  !K.tilesArray[tile.getIndex()+8].doesHavePiece(){
+                if !checkSquare(tile: tile) &&  !K.tilesArray[tile.getIndex()+8].doesHavePiece(){
                     squares.append(tile)
                 }
             }
