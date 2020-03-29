@@ -17,12 +17,14 @@ class CheckKing {
         switch color {
             
         case K.white:
+            
             outerLoop: for piece in K.whitePieces {
                 if piece.imageName == "whiteKing" {
                     kingLocation = piece.location
                     break outerLoop
                 }
             }
+            
             outerLoop: for piece in K.blackPieces {
                 if piece.isAvailableSquare(Tile(kingLocation)) {
                     inCheck = true
@@ -32,11 +34,13 @@ class CheckKing {
             
         case K.black:
             outerLoop: for piece in K.blackPieces {
-                if piece.imageName == "whiteKing" {
+                if piece.imageName == "blackKing" {
                     kingLocation = piece.location
                     break outerLoop
                 }
             }
+            
+
             outerLoop: for piece in K.whitePieces {
                 if piece.isAvailableSquare(Tile(kingLocation)) {
                     inCheck = true

@@ -37,8 +37,8 @@ class Piece {
     }
     
     func FindAvailableSquares () -> [Tile] {
-        var squares = [Tile()]
-        return squares
+        return [Tile()]
+        
     }
     
     

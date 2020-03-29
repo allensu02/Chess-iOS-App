@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uaH-0o-wfd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RyI-lj-If3">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,103 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="pON-lO-mHs">
-            <objects>
-                <viewController id="uaH-0o-wfd" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="P01-KY-58e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lmp-D7-OnJ">
-                                <rect key="frame" x="58" y="517" width="298" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
-                                <state key="normal" title="Join Game"/>
-                                <connections>
-                                    <segue destination="6JJ-q1-hYl" kind="show" id="Jqf-5v-aA0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="uAi-RL-JxW">
-                                <rect key="frame" x="58" y="277" width="298" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
-                                <state key="normal" title="Create Game"/>
-                                <connections>
-                                    <segue destination="6ta-kQ-RZu" kind="show" id="vFh-aC-XL9"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="ON2-YW-7U0"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lAi-KB-oNj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1020.2898550724639" y="118.52678571428571"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="F5y-Ve-dpf">
-            <objects>
-                <viewController id="6ta-kQ-RZu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EKT-xZ-PQ4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Code: 489439" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XV-ee-7Cm">
-                                <rect key="frame" x="47" y="392" width="321" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="LND-nK-r77"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="BLJ-zx-FBw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GXU-QA-nuN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-367" y="-157"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="OgH-vK-skz">
-            <objects>
-                <viewController id="6JJ-q1-hYl" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="axC-iJ-xcg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQb-Me-6vB">
-                                <rect key="frame" x="84" y="340" width="246" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="8392723" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pu-8G-zCh">
-                                <rect key="frame" x="107" y="450" width="201" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Mft-c9-gFy">
-                                <rect key="frame" x="58" y="573" width="298" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
-                                <state key="normal" title="Join Game"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="l82-pM-Aud"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="7XA-2O-G3b"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="du6-7e-t7h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-349.27536231884062" y="497.54464285714283"/>
-        </scene>
         <!--Chess View Controller-->
         <scene sceneID="6h6-XU-gg2">
             <objects>
@@ -112,6 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="sXW-4S-PsE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="crq-lH-dr7">
                                 <rect key="frame" x="0.0" y="241" width="414" height="414"/>
                                 <subviews>
@@ -608,10 +514,10 @@
                                     <constraint firstAttribute="width" secondItem="crq-lH-dr7" secondAttribute="height" multiplier="1:1" id="6b8-ZC-nYF"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn: White" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-hJ-0v6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn: White" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjV-hJ-0v6">
                                 <rect key="frame" x="58" y="151" width="299" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="50"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -619,8 +525,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="crq-lH-dr7" firstAttribute="leading" secondItem="V9X-7z-9f4" secondAttribute="leading" id="01x-PK-GWi"/>
+                            <constraint firstItem="sXW-4S-PsE" firstAttribute="leading" secondItem="HZK-78-S1l" secondAttribute="leading" id="2LU-WS-7FK"/>
+                            <constraint firstAttribute="trailing" secondItem="sXW-4S-PsE" secondAttribute="trailing" id="78F-4M-UmG"/>
+                            <constraint firstItem="sXW-4S-PsE" firstAttribute="top" secondItem="HZK-78-S1l" secondAttribute="top" id="F6e-eR-Sgj"/>
                             <constraint firstItem="crq-lH-dr7" firstAttribute="centerY" secondItem="HZK-78-S1l" secondAttribute="centerY" id="Ltj-ib-SCp"/>
                             <constraint firstItem="crq-lH-dr7" firstAttribute="centerX" secondItem="HZK-78-S1l" secondAttribute="centerX" id="VHv-k2-UVM"/>
+                            <constraint firstAttribute="bottom" secondItem="sXW-4S-PsE" secondAttribute="bottom" id="yCw-sC-G8b"/>
                             <constraint firstItem="V9X-7z-9f4" firstAttribute="trailing" secondItem="crq-lH-dr7" secondAttribute="trailing" id="yHF-kV-NS1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V9X-7z-9f4"/>
@@ -695,7 +605,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFA-tV-JTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="545" y="139"/>
+            <point key="canvasLocation" x="40.579710144927539" y="127.23214285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="1300" height="866"/>
+    </resources>
 </document>

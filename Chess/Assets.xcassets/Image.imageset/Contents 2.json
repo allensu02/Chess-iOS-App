@@ -2,11 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "chessLogo.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
+      "filename" : "old board.jpg",
       "scale" : "1x"
     },
     {

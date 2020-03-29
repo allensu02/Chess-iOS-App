@@ -1,0 +1,16 @@
+PODS:
+  - Loading (1.0.4)
+
+DEPENDENCIES:
+  - Loading
+
+SPEC REPOS:
+  https://github.com/lixiang1994/Specs:
+    - Loading
+
+SPEC CHECKSUMS:
+  Loading: 2b2dfa573b93fe1a6c7bb2f114dbf28dd7549994
+
+PODFILE CHECKSUM: ca1426c23880383498dbb7737e4210018677a3e3
+
+COCOAPODS: 1.9.0

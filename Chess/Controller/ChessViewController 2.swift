@@ -16,7 +16,7 @@ class ChessViewController: UIViewController {
     var allMoves: [String] = []
     
     var turn: String = K.white
-    var checkKing = CheckKing()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,25 +31,31 @@ class ChessViewController: UIViewController {
 
 //MARK: - Setting up initial board
     func setUpBoard () {
-        
-        //sets the tag for each tile based on row and column. also sets title to "" and color to default
         var count = 0
+        var numRow = 1
+        
+        //sets the tag for each tile based on row and column
         for row in 1...8 {
-            for col in 1...8 {
-                let tile = allTiles[count]
-                tile.tag = row*10 + col
-                tile.setTitle("", for: .normal)
-                setDefaultTileColor(tileButton: tile)
+            var numCol = 1
+            for button in 1...8 {
+                allTiles[count].tag = numRow*10 + numCol
+                numCol += 1
                 count += 1
             }
+            numRow += 1
+        }
+        for tileButton in allTiles {
+            tileButton.setTitle("", for: .normal)
+            
+            setDefaultTileColor(tileButton: tileButton)
         }
         
     }
     
     //sets dark and light tile colors
     func setDefaultTileColor (tileButton: UIButton) {
-        let ones = tileButton.tag % 10
-        let tens = tileButton.tag/10
+        var ones = tileButton.tag % 10
+        var tens = tileButton.tag/10
         let sum = ones + tens
         if sum % 2 == 0 {
             tileButton.backgroundColor = K.colorLight
@@ -59,10 +65,44 @@ class ChessViewController: UIViewController {
     }
     
     
+    func updateBoard () {
+        for piece in K.whitePieces {
+            updatePiece(piece)
+        }
+        for piece in K.blackPieces {
+            updatePiece(piece)
+        }
+    }
     
     
-    //sets up the pieces according to locations
+    func updatePiece (_ piece: Piece) {
+        let int = piece.location
+        for tile in allTiles {
+            if int == tile.tag {
+                let image = UIImage(named: piece.imageName)
+                tile.setBackgroundImage(image, for: .normal)
+                if piece.isActive == true {
+                    tile.isEnabled = true
+                } else {
+                    tile.isEnabled = false
+                }
+            }
+        }
+    }
+    
+    func updateTile (_ tile: Tile) {
+        
+        if tile.doesHavePiece() {
+            tile.setBackgroundImage(UIImage(named: tile.piece!.imageName), for: .normal)
+        
+        } else {
+            tile.setBackgroundImage(.none, for: .normal)
+        }
+        
+    }
     func setUpPieces () {
+        
+        
         for i in 1...8 {
             addPiece(piece: Pawn(active: true, loc: 20+i, side: K.white))
             addPiece(piece: Pawn(active: true, loc: 70+i, side: K.black))
@@ -103,7 +143,7 @@ class ChessViewController: UIViewController {
         } else {
             K.blackPieces.append(piece)
         }
-        let num = (piece.y - 1) * 8 + piece.x - 1
+        var num = (piece.y - 1) * 8 + piece.x - 1
         allTiles[num].addPiece(piece)
         
         
@@ -119,6 +159,7 @@ class ChessViewController: UIViewController {
 
     @IBAction func tileTouched(_ sender: Tile) {
         movePiece(newTile: sender)
+        printMoves()
     }
     
     //if turn is white, and there is no tile touched yet, and the tile touched is same color as the turn, then tiletouched is the new tile.
@@ -142,20 +183,16 @@ class ChessViewController: UIViewController {
         } else if oldTile != nil {
             
             if (oldTile!.piece!.isAvailableSquare(newTile))  {
-                
-                //make move
                 oldTile!.piece!.Move(newLocation: newTile.tag)
                 newTile.addPiece(oldTile!.piece!)
                 oldTile?.removePiece()
                 updateTile(oldTile!)
                 updateTile(newTile)
-                
-               
                 nextTurn()
                 setDefaultTileColor(tileButton: oldTile!)
                 oldTile = nil
                 
-               
+                allMoves.append("\(oldTile?.piece?.imageName) moves from tile \(oldTile?.tag) to \(newTile.tag)")
                 } else {
                     setDefaultTileColor(tileButton: oldTile!)
                     oldTile = nil
@@ -164,46 +201,9 @@ class ChessViewController: UIViewController {
             }
    
     }
-    func updateBoard () {
-        for piece in K.whitePieces {
-            updatePiece(piece)
-        }
-        for piece in K.blackPieces {
-            updatePiece(piece)
-        }
-    }
     
-    
-    func updatePiece (_ piece: Piece) {
-        
-        //checks if piece is on a certain tile. if yes, then tile background image is piece image
-        let int = piece.location
-        for tile in allTiles {
-            if int == tile.tag {
-                let image = UIImage(named: piece.imageName)
-                tile.setBackgroundImage(image, for: .normal)
-                if piece.isActive == true {
-                    tile.isEnabled = true
-                } else {
-                    tile.isEnabled = false
-                }
-            }
-        }
-    }
-    
-    func updateTile (_ tile: Tile) {
-        
-        if tile.doesHavePiece() {
-            tile.setBackgroundImage(UIImage(named: tile.piece!.imageName), for: .normal)
-        
-        } else {
-            tile.setBackgroundImage(.none, for: .normal)
-        }
-        
-    }
     
     func nextTurn () {
-       
         
         if turn == K.white {
             turnLabel.text = "Turn: \(K.black)"
@@ -220,7 +220,11 @@ class ChessViewController: UIViewController {
         
     }
     
-    
+    func printMoves() {
+        for move in allMoves {
+            print(move)
+        }
+    }
 }
     
     
