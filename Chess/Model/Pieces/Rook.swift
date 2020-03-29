@@ -84,18 +84,14 @@ class Rook: Piece {
     func toContinue (tile: Tile) -> Bool {
         var continueSquares = true
         if checkSquare(tile: tile) {
-            print(tile.getLocation())
             if K.tilesArray[tile.getIndex()].piece?.color == self.color {
-                print("color is self")
                 continueSquares = false
             } else {
                 squares.append(tile)
-                print("color is other")
                 continueSquares = false
             }
         } else {
             squares.append(tile)
-            print("no square")
         }
         return continueSquares
         

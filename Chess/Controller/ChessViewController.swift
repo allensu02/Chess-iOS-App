@@ -16,7 +16,7 @@ class ChessViewController: UIViewController {
     var allMoves: [String] = []
     
     var turn: String = K.white
-    
+    var checkKing = CheckKing()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,7 +159,6 @@ class ChessViewController: UIViewController {
 
     @IBAction func tileTouched(_ sender: Tile) {
         movePiece(newTile: sender)
-        printMoves()
     }
     
     //if turn is white, and there is no tile touched yet, and the tile touched is same color as the turn, then tiletouched is the new tile.
@@ -183,11 +182,18 @@ class ChessViewController: UIViewController {
         } else if oldTile != nil {
             
             if (oldTile!.piece!.isAvailableSquare(newTile))  {
+                
                 oldTile!.piece!.Move(newLocation: newTile.tag)
                 newTile.addPiece(oldTile!.piece!)
                 oldTile?.removePiece()
                 updateTile(oldTile!)
                 updateTile(newTile)
+                if turn == K.white {
+                    print(checkKing.kingInCheck(color: K.black))
+                } else {
+                    print(checkKing.kingInCheck(color: K.black))
+
+                }
                 nextTurn()
                 setDefaultTileColor(tileButton: oldTile!)
                 oldTile = nil
@@ -220,11 +226,7 @@ class ChessViewController: UIViewController {
         
     }
     
-    func printMoves() {
-        for move in allMoves {
-            print(move)
-        }
-    }
+    
 }
     
     

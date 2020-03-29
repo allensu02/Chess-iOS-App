@@ -16,6 +16,7 @@
 		A33569CB2415EFD300979D73 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33569CA2415EFD300979D73 /* Bishop.swift */; };
 		A33569CD2415EFE100979D73 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33569CC2415EFE100979D73 /* Rook.swift */; };
 		A33569D22415F03E00979D73 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33569D12415F03E00979D73 /* Tile.swift */; };
+		A35FB927242CBB2200E453BE /* BeginGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35FB926242CBB2200E453BE /* BeginGame.swift */; };
 		A36F62142417D4AB0002DD95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F62132417D4AB0002DD95 /* Constants.swift */; };
 		A3A6CFF324148FC3004E4961 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A6CFF224148FC3004E4961 /* AppDelegate.swift */; };
 		A3A6CFF524148FC3004E4961 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A6CFF424148FC3004E4961 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 		A33569CA2415EFD300979D73 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		A33569CC2415EFE100979D73 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		A33569D12415F03E00979D73 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		A35FB926242CBB2200E453BE /* BeginGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginGame.swift; sourceTree = "<group>"; };
 		A36F62132417D4AB0002DD95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3A6CFEF24148FC3004E4961 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3A6CFF224148FC3004E4961 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				A33569CF2415F02700979D73 /* Pieces */,
 				A33569D12415F03E00979D73 /* Tile.swift */,
+				A35FB926242CBB2200E453BE /* BeginGame.swift */,
 				A326923024285A56002E987C /* CheckKing.swift */,
 			);
 			path = Model;
@@ -261,6 +264,7 @@
 				A33569CD2415EFE100979D73 /* Rook.swift in Sources */,
 				A33569C92415EFB900979D73 /* Queen.swift in Sources */,
 				A3DFA60124188EF000EFB4ED /* King.swift in Sources */,
+				A35FB927242CBB2200E453BE /* BeginGame.swift in Sources */,
 				A33569CB2415EFD300979D73 /* Bishop.swift in Sources */,
 				A36F62142417D4AB0002DD95 /* Constants.swift in Sources */,
 				A3A6CFF324148FC3004E4961 /* AppDelegate.swift in Sources */,
